@@ -1,0 +1,593 @@
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: #1a0a00;
+}
+
+/* ============================================================
+   HERO SECTION
+============================================================ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.65) 0%,
+        rgba(0,0,0,0.30) 60%,
+        rgba(0,0,0,0.05) 100%
+    );
+    z-index: 1;
+}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    width: 1400px;
+    max-width: 90%;
+    padding: 10px 24px;
+    margin: 20px auto 0;
+    border-radius: 64px;
+    background: rgba(180, 160, 160, 0.30);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    position: relative;
+    z-index: 10;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 8px 22px;
+    border-radius: 30px;
+    transition: background 0.25s, color 0.25s;
+    white-space: nowrap;
+}
+
+nav a svg { flex-shrink: 0; }
+
+nav a:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+}
+
+nav a.active {
+    background: #AC2A2A;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+.hero__content {
+    position: absolute;
+    top: 160px;
+    left: 80px;
+    max-width: 700px;
+    z-index: 5;
+}
+
+.hero__title {
+    color: #FFF;
+    font-family: 'Playfair Display', serif;
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 18px;
+}
+
+.hero__title-line {
+    width: 520px;
+    height: 3px;
+    background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%);
+    border-radius: 2px;
+    margin-bottom: 32px;
+}
+
+.hero__desc {
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.35;
+    max-width: 580px;
+    margin-bottom: 48px;
+}
+
+.hero__btn {
+    display: inline-block;
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 44px;
+    border-radius: 64px;
+    background: #AC2A2A;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+}
+
+.hero__btn:hover { background: #c43333; transform: translateY(-2px); }
+.hero__btn:active { transform: translateY(0); }
+
+/* ============================================================
+   WHY EGYPT SECTION
+============================================================ */
+.why {
+    width: 100%;
+    background: #A0522D;
+    padding: 60px 80px 80px;
+    overflow: hidden;
+}
+
+/* Header baris judul + garis */
+.why__header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: 250px;
+    margin-bottom: 60px;
+}
+
+.why__title {
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.why__line {
+    width: 650px;
+    height: 3px;
+    background: #FFF;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   WRAPPER: blur panel + cards
+   Posisi: relative agar blur bisa absolute di dalamnya
+============================================================ */
+.why__cards-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* tinggi wrapper = tinggi card terbesar + sedikit padding bawah */
+    min-height: 600px;
+}
+
+/* Panel cream blur — posisi absolute di belakang cards */
+.why__cards-bg {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2000px;
+    height: 430px;
+    background: #E8D8B0;
+    filter: blur(9px);
+    z-index: 0;           /* di BELAKANG cards */
+    border-radius: 8px;
+    pointer-events: none; /* tidak mengganggu klik */
+}
+
+/* Cards — z-index lebih tinggi, tampil di DEPAN blur */
+.why__cards {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+.card {
+    border-radius: 32px;
+    border: 8px solid #AC2A2A;
+    background: #FFF;
+    box-shadow: 8px 8px 4px 0 rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 28px;
+    gap: 20px;
+}
+
+.card--sm { width: 400px; height: 498px; }
+.card--lg { width: 400px; height: 570px; }
+
+.card__icon { flex-shrink: 0; }
+
+.card__title {
+    color: #AC2A2A;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.card__text {
+    color: #000;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* ============================================================
+   WHY CHOOSE EGYPT SECTION
+============================================================ */
+.choose {
+    width: 100%;
+    background: #A97142;
+    padding: 80px 80px 120px;  /* extra bottom untuk badge melayang */
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+/* Header: garis kiri + judul + garis kanan */
+.choose__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 60px;
+}
+
+.choose__line {
+    width: 320px;
+    height: 3px;
+    background: #FFF;
+    flex-shrink: 0;
+}
+
+.choose__title {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+/* Video box */
+.choose__video-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 52px;
+}
+
+.choose__video {
+    width: 800px;
+    height: 600px;
+    border-radius: 32px;
+    box-shadow: 8px 8px 4px 0 rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+    display: block;
+    background: #000;  /* fallback jika video belum diisi */
+}
+
+/* Description text */
+.choose__desc {
+    color: #FFF;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: normal;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   GLOBAL VALUES SECTION
+============================================================ */
+.global {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0px;
+    height: 1096px;
+    clip-path: inset(0);  /* clip konten yang keluar tepi */
+    max-height: 100vh;
+}
+
+/* Background foto — absolute fill */
+.global__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    display: block;
+}
+
+/* Overlay gelap supaya teks terbaca */
+.global__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.55) 60%
+    );
+    z-index: 1;
+}
+
+/* ---- Kotak "Global Values" — di bawah section choose, melayang ke global ---- */
+/* Badge ada di dalam .choose yang punya position:relative, jadi tidak terpotong */
+.global__badge-wrap {
+    position: absolute;
+    bottom: -80px;         /* setengah dari tinggi kotak (159/2 ≈ 80) */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.global__badge {
+    width: 959px;
+    height: 159px;
+    border-radius: 32px;
+    border: 10px solid #A97142;
+    background: #E8D8B0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global__badge-text {
+    color: #000;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* ---- Konten teks di atas gambar ---- */
+.global__content {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    max-width: 500px;
+    z-index: 2;
+}
+
+.global__subtitle {
+    color: #FFF;
+    font-family: 'Playfair Display', serif;
+    font-size: 84px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 24px;
+}
+
+.global__text {
+    color: #FFF;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* ---- .global__img-small lama — dihapus, diganti thumbs ---- */
+.global__img-small { display: none; }
+
+/* ============================================================
+   GLOBAL VALUES — THUMBNAIL AREA (2 kotak saja)
+============================================================ */
+
+/* Container thumb — kanan bawah
+   right negatif supaya kotak kecil setengah keluar dari tepi */
+.global__thumbs {
+    position: absolute;
+    bottom: 80px;
+    right: -125px;
+    z-index: 5;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+/* Base thumb */
+.global__thumb {
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.global__thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Kotak besar (aktif) — 320×370, border putih 8px */
+.global__thumb-active {
+    width: 320px;
+    height: 370px;
+    border: 8px solid #FFF;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    cursor: default;
+    position: relative;
+    z-index: 2;
+}
+
+/* Kotak kecil (next) — 250×300, tanpa border keras */
+.global__thumb-next {
+    width: 250px;
+    height: 300px;
+    border-radius: 32px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    cursor: pointer;
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
+    align-self: flex-end;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.global__thumb-next:hover {
+    opacity: 1;
+    transform: translateX(6px);
+}
+
+/* Hapus .global__img-small lama */
+.global__img-small { display: none; }
+
+/* ============================================================
+   E-BOOK SECTION
+============================================================ */
+.ebook {
+    width: 100%;
+    background: #E8D8B0;
+    padding: 80px;
+}
+
+.ebook__inner {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Gambar buku */
+.ebook__cover {
+    width: 529px;
+    height: 751px;
+    aspect-ratio: 81 / 115;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 8px 8px 24px rgba(0,0,0,0.25);
+}
+
+.ebook__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Konten kanan */
+.ebook__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.ebook__title {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ebook__desc {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.ebook__btn {
+    display: flex;
+    width: 335px;
+    height: 85px;
+    padding: 15px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 64px;
+    background: #AC2A2A;
+    text-decoration: none;
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    transition: background 0.25s, transform 0.2s;
+    cursor: pointer;
+}
+
+.ebook__btn:hover  { background: #c43333; transform: translateY(-2px); }
+.ebook__btn:active { transform: translateY(0); }
+
+.footer { background: #282828; color: white; padding: 60px 80px; }
+.footer-container { display: flex; justify-content: space-between; gap: 40px; }
+.footer-logo { width: 90px; margin-bottom: 10px; }
+.footer-left { max-width: 350px; font-size: 14px; line-height: 1.6; }
+.footer-middle {
+    display: flex; gap: 80px;
+    border-left: 1px solid #777; border-right: 1px solid #777;
+    padding: 0 60px;
+}
+.footer-middle h4 { margin-bottom: 10px; }
+.footer-middle p { margin: 5px 0; cursor: pointer; }
+.footer-middle button {
+    margin-top: 10px; padding: 6px 14px;
+    border: 1px solid white; background: transparent; color: white;
+    border-radius: 6px; cursor: pointer; width: fit-content;
+}
+.footer-right { max-width: 300px; font-size: 14px; line-height: 1.6; }
