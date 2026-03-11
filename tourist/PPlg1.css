@@ -70,7 +70,7 @@
 .wonders-section {
     background: #ffffff;
     width: 100%;
-    padding: 100px 0 120px;
+    padding: 100px 0 30px;
     overflow: visible;
 }
 
@@ -117,13 +117,17 @@
 .wonders-right {
     flex-shrink: 0;
     width: 560px;
+    overflow: visible !important; /* ← tambahkan ini */
+    position: relative;           /* ← pastikan ada */
 }
+
 
 .wonders-img-wrap {
     position: relative;
     width: 560px;
     height: 780px;
     margin: 20px 30px 20px 20px;
+    overflow: visible !important; /* ← tambahkan ini */
 }
 
 .wonders-bg-shape {
@@ -165,6 +169,159 @@
     max-width: 92%;
     margin: 0 auto;
     overflow: hidden;
+}
+
+.iconic-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-end;
+    width: 1400px;
+    max-width: 92%;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.iconic-card {
+    width: 373px;
+    height: 604px;
+    flex-shrink: 0;
+    border-radius: 32px;
+    border: 1px solid #000;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  /* ← tetap flex-end */
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iconic-card-info {
+    width: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 9px;
+    border-radius: 0 0 32px 32px;
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(4px);
+
+    /* UBAH INI — pakai absolute juga */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+    pointer-events: none;
+}
+
+.iconic-card:hover .iconic-card-info {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* =============================================
+   NAMA TEMPAT — selalu terlihat (default state)
+   ============================================= */
+.iconic-card-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: normal;
+    padding: 0 20px 20px 20px;
+    width: 100%;
+    
+    /* TAMBAHKAN INI — keluarkan dari flow normal */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    transition: opacity 0.2s ease;
+}
+/* Kartu 1 & 3: teks putih */
+.iconic-card:nth-child(1) .iconic-card-name,
+.iconic-card:nth-child(3) .iconic-card-name {
+    color: #FFF;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Kartu 2: teks hitam */
+.iconic-card:nth-child(2) .iconic-card-name {
+    color: #000;
+    text-shadow: none;
+}
+
+/* Sembunyikan nama saat hover (karena muncul di info box) */
+.iconic-card:hover .iconic-card-name {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* =============================================
+   JUDUL DALAM INFO BOX
+   ============================================= */
+.iconic-card-info h3 {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+/* =============================================
+   DESKRIPSI DALAM INFO BOX
+   ============================================= */
+.iconic-card-info p {
+    color: #000;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
+
+/* =============================================
+   CAPTION BAWAH
+   ============================================= */
+.iconic-caption {
+    text-align: center;
+    margin-top: 36px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: #333;
+}
+
+.iconic-caption .explore,
+.iconic-caption .hidden {
+    color: #AC2A2A;
+    font-weight: 700;
+}
+
+.iconic-cards:hover .iconic-card {
+    width: 373px; /* yang lain tetap */
+}
+
+.iconic-card:hover {
+    width: 496px !important; /* melebar saat hover */
 }
 
 .iconic-slider-track {
@@ -669,5 +826,21 @@
 }
 
 .packet-card:nth-child(2) {
-    height: 577px;
+    height: 620px;
+}
+
+.wonders-section {
+    overflow: visible !important; /* sudah ada tapi pastikan tidak di-override */
+}
+
+.wonders-content {
+    overflow: visible !important;
+}
+
+.wonders-right {
+    overflow: visible !important;
+}
+
+.wonders-img-wrap {
+    overflow: visible !important; /* INI YANG UTAMA — negatif offset SVG butuh ini */
 }
