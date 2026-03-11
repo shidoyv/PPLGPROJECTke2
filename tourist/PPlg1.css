@@ -844,3 +844,64 @@
 .wonders-img-wrap {
     overflow: visible !important; /* INI YANG UTAMA — negatif offset SVG butuh ini */
 }
+
+.footer{
+    background:#2a2a2a;
+    color:white;
+    padding:60px 80px;
+    }
+
+    .footer-container{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    }
+
+    /* LOGO */
+    .footer-logo{
+    width:90px;
+    margin-bottom:10px;
+    }
+
+    /* LEFT */
+    .footer-left{
+    max-width:350px;
+    font-size:14px;
+    line-height:1.6;
+    }
+
+    /* MIDDLE */
+    .footer-middle{
+    display:flex;
+    gap:80px;
+    border-left:1px solid #777;
+    border-right:1px solid #777;
+    padding:0 60px;
+    }
+
+    .footer-middle h4{
+    margin-bottom:10px;
+    }
+
+    .footer-middle p{
+    margin:5px 0;
+    cursor:pointer;
+    }
+
+    /* BUTTON */
+    .footer-middle button{
+    margin-top:10px;
+    padding:6px 14px;
+    border:1px solid white;
+    background:transparent;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    }
+
+    /* RIGHT */
+    .footer-right{
+    max-width:300px;
+    font-size:14px;
+    line-height:1.6;
+    }

@@ -298,14 +298,16 @@ nav a.active {
     margin-bottom: 52px;
 }
 
+
 .choose__video {
-    width: 1288px;
-    height: 696px;
+    width: 100%;
+    max-width: 1288px;
+    aspect-ratio: 16 / 9;      /* ← otomatis ikut rasio video */
     border-radius: 32px;
     box-shadow: 8px 8px 4px 0 rgba(0, 0, 0, 0.25);
-    object-fit: cover;
+    object-fit: contain;
+    background: #000;
     display: block;
-    background: #E8D8B0;   /* ← dari #000 jadi #E8D8B0 */
 }
 
 /* Description text */
@@ -570,31 +572,63 @@ nav a.active {
 .ebook__btn:hover  { background: #c43333; transform: translateY(-2px); }
 .ebook__btn:active { transform: translateY(0); }
 
-.footer { background: #282828; color: white; padding: 60px 80px; }
-.footer-container { display: flex; justify-content: space-between; gap: 40px; }
-.footer-logo { width: 90px; margin-bottom: 10px; }
-.footer-left { max-width: 350px; font-size: 14px; line-height: 1.6; }
-.footer-middle {
-    display: flex; gap: 80px;
-    border-left: 1px solid #777; border-right: 1px solid #777;
-    padding: 0 60px;
-}
-.footer-middle h4 { margin-bottom: 10px; }
-.footer-middle p { margin: 5px 0; cursor: pointer; }
-.footer-middle button {
-    margin-top: 10px; padding: 6px 14px;
-    border: 1px solid white; background: transparent; color: white;
-    border-radius: 6px; cursor: pointer; width: fit-content;
-}
-.footer-right { max-width: 300px; font-size: 14px; line-height: 1.6; }
-.global__content::before {
-    content: '';
-    position: absolute;
-    inset: -32px -40px;
-    border-radius: 32px;
-    background: rgba(0, 0, 0, 0.50);
-    filter: blur(25px);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    z-index: -1;
-}
+.footer{
+    background:#2a2a2a;
+    color:white;
+    padding:60px 80px;
+    }
+
+    .footer-container{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    }
+
+    /* LOGO */
+    .footer-logo{
+    width:90px;
+    margin-bottom:10px;
+    }
+
+    /* LEFT */
+    .footer-left{
+    max-width:350px;
+    font-size:14px;
+    line-height:1.6;
+    }
+
+    /* MIDDLE */
+    .footer-middle{
+    display:flex;
+    gap:80px;
+    border-left:1px solid #777;
+    border-right:1px solid #777;
+    padding:0 60px;
+    }
+
+    .footer-middle h4{
+    margin-bottom:10px;
+    }
+
+    .footer-middle p{
+    margin:5px 0;
+    cursor:pointer;
+    }
+
+    /* BUTTON */
+    .footer-middle button{
+    margin-top:10px;
+    padding:6px 14px;
+    border:1px solid white;
+    background:transparent;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    }
+
+    /* RIGHT */
+    .footer-right{
+    max-width:300px;
+    font-size:14px;
+    line-height:1.6;
+    }

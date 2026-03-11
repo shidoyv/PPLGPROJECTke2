@@ -387,54 +387,95 @@ h2.bio-title {
 /* ══════════════════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════════════════ */
-.footer {
-    background: #2a2a2a;
-    color: white;
-    padding: 60px 80px;
+.footer{
+background:linear-gradient(#4a4a4a,#2f2f2f);
+color:white;
+padding:70px 80px;
+font-family:Arial;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
+.footer-container{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:40px;
 }
 
-.footer-logo {
-    width: 90px;
-    margin-bottom: 10px;
+/* LOGO */
+.logo{
+width:90px;
+margin-bottom:10px;
 }
 
-.footer-left {
-    max-width: 350px;
-    font-size: 14px;
-    line-height: 1.6;
+/* LEFT */
+
+.footer-left{
+max-width:350px;
+font-size:14px;
+line-height:1.6;
 }
 
-.footer-middle {
-    display: flex;
-    gap: 80px;
-    border-left: 1px solid #777;
-    border-right: 1px solid #777;
-    padding: 0 60px;
+/* CENTER */
+
+.footer-center{
+display:flex;
+gap:80px;
+padding:0 60px;
+border-left:2px solid rgba(255,255,255,0.3);
+border-right:2px solid rgba(255,255,255,0.3);
+font-size: 23px;
 }
 
-.footer-middle h4 { margin-bottom: 10px; }
-.footer-middle p  { margin: 5px 0; cursor: pointer; }
-
-.footer-middle button {
-    margin-top: 10px;
-    padding: 6px 14px;
-    border: 1px solid white;
-    background: transparent;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
+.footer-center h4{
+margin-bottom:10px;
 }
 
-.footer-right {
-    max-width: 300px;
-    font-size: 14px;
-    line-height: 1.6;
+.footer-center p{
+margin:6px 0;
+}
+
+/* BUTTON */
+
+.footer-center button{
+margin-top:12px;
+padding:7px 18px;
+background:transparent;
+border:1px solid white;
+border-radius:6px;
+color:white;
+cursor:pointer;
+font-size: 23px;
+}
+
+.footer-center button:hover{
+background:white;
+color:black;
+}
+
+/* RIGHT */
+
+.footer-right{
+max-width:300px;
+font-size:14px;
+line-height:1.6;
+}
+
+.footer::after{
+content:"";
+display:block;
+width:60%;
+height:40px;
+margin:40px auto 0;
+background:radial-gradient(rgba(255,255,255,0.2),transparent);
+filter:blur(10px);
+}
+
+/* COPYRIGHT */
+
+.copyright{
+margin-top:15px;
+font-size:12px;
+opacity:0.7;
 }
 
 .bio-section { transition: background .4s ease; }
